@@ -12,12 +12,10 @@ def resize (img,percentage):
 
 currentX=0
 currentY=0
-w=1000
-h=600
-img=np.zeros((1661,1703),np.uint8)
+
+img=np.zeros((600,1000),np.uint8)
 new=img.copy()
 vx,vy,vz=test()
-print(vx[2],vy[2])
 
 #
 for i in range (0,len(vx)):
@@ -29,5 +27,5 @@ for i in range (0,len(vx)):
     currentY=nextY
 
 
-cv2.imshow('h',resize(new,35))
+cv2.imshow('h',resize(new,100))
 cv2.waitKey(0)

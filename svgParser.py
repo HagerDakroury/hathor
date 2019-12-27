@@ -5,6 +5,10 @@ import numpy as np
 import serial
 import struct
 
+dimx=374.5
+dimy=261.5
+maxSpeed =20  #mm/sec
+
 currentX=0
 currentY=0
 vx=[]
@@ -43,7 +47,7 @@ def generate_curve(curve,type=3):
     global vy
     global scale
 
-    mySteps=np.arange(0.0,1.25,.25)
+    mySteps=np.arange(0.0,1.1,step)
 
     for i in mySteps:
         point=0
@@ -99,7 +103,7 @@ def test():
     global vx
     global vy
     global vz
-    svg = open('fairies-2101944.svg')
+    svg = open('test_car.svg')
 
     svg_dom = minidom.parse(svg)
 
@@ -111,8 +115,10 @@ def test():
     for path in path_data:
         generate(path)
 
-    vx=[int(i) for i in vx]
-    vy = [int(i) for i in vy]
+    vx=[i for i in vx]
+    vy=[i for i in vy]
+    print(vx)
+
 
 
 
