@@ -20,7 +20,7 @@ fy=[]
 t=[]
 dirx=[]
 diry=[]
-step=.1
+step=.05
 scale=1
 tRate=500
 
@@ -100,7 +100,7 @@ def generate_curve(curve,type=3):
     global vy
     global scale
 
-    mySteps=np.arange(0.0,1.1,step)
+    mySteps=np.arange(0.0,1.05,step)
 
     for i in mySteps:
         point=0
@@ -159,7 +159,7 @@ def load():
     global fx
     global fy
     global t
-    svg = open('test_car.svg')
+    svg = open('simple.svg')
 
     svg_dom = minidom.parse(svg)
 
@@ -197,7 +197,6 @@ def transmit():
     global diry
     global vz
 
-    print(fx[908])
 
 
     s = serial.Serial("COM4", 9600)
@@ -211,12 +210,6 @@ def transmit():
         s.write(a[2])
         s.write(a[3])
 
-        print(s.read())
-        c = struct.pack('I', t[0])
-        s.write(c[0])
-        s.write(c[1])
-        s.write(c[2])
-        s.write(c[3])
 
         while True:
             a = s.read()
@@ -228,6 +221,8 @@ def transmit():
             if i>len(fx)-1:
                 break
             for j in range (i, iold+tRate):
+                if j > len(fx) - 1:
+                    break;
                 ss = s.read()
                 print(ss)
                 a = struct.pack('I', fx[j])
@@ -240,7 +235,14 @@ def transmit():
                 s.write(b[1])
                 s.write(b[2])
                 s.write(b[3])
-                c = struct.pack('I', t[j])
+                t1=t[j]/1000
+                t2=t[j]%1000
+                c = struct.pack('I', t1)
+                s.write(c[0])
+                s.write(c[1])
+                s.write(c[2])
+                s.write(c[3])
+                c = struct.pack('I', t2)
                 s.write(c[0])
                 s.write(c[1])
                 s.write(c[2])
@@ -269,13 +271,13 @@ load()
 # print(sum(fy[0:999]))
 # print(sum(t[0:999]))
 
-#
-# print(sum(fx))
-# print(sum(fy))
-# print (sum(t))
+print(len(fx))
+print(sum(fx))
+print(sum(fy))
+print(sum(t))
 
-print(t[0])
-print (fy[499])
+print(t)
+
 transmit()
 
 

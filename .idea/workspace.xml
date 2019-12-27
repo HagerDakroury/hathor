@@ -15,13 +15,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/svgParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="215" column="16" lean-forward="true" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
+            <state relative-caret-position="492">
+              <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simple.svg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -92,8 +97,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-33" />
-    <option name="y" value="51" />
+    <option name="x" value="157" />
+    <option name="y" value="47" />
     <option name="width" value="1009" />
     <option name="height" value="965" />
   </component>
@@ -208,7 +213,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-26" y="41" width="807" height="772" extended-state="0" />
+    <frame x="126" y="38" width="807" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18961039" />
@@ -216,15 +221,15 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296875" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.83116883" visible="true" weight="0.3578125" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4948052" weight="0.3953125" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.82857144" visible="true" weight="0.3578125" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4922078" weight="0.3953125" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295129" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4987013" weight="0.328125" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.24068768" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32808024" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.16883117" side_tool="true" visible="true" weight="0.3578125" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3291536" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4987013" weight="0.3265625" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.17142858" side_tool="true" visible="true" weight="0.3578125" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4987013" weight="0.328125" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -303,10 +308,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/simple.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/svgParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="215" column="16" lean-forward="true" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
+        <state relative-caret-position="492">
+          <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
