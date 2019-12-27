@@ -7,15 +7,68 @@ import struct
 
 dimx=374.5
 dimy=261.5
-maxSpeed =20  #mm/sec
+maxFrequancy=32000.00
+maxSpeed=0.00002
 
 currentX=0
 currentY=0
 vx=[]
 vy=[]
 vz=[]
+fx=[]
+fy=[]
+t=[]
+dirx=[]
+diry=[]
 step=.1
 scale=1
+tRate=500
+
+
+def resize(w, h):
+    global vx
+    global vy
+    sW= float(dimx/w)
+    sH=float(dimy/h)
+    vx=[i*sW for i in vx]
+    vy=[i*sH for i in vy]
+
+def set_frequancy():
+    global vx
+    global vy
+    global fx
+    global fy
+    global t
+
+    for i in range(0,len(vx)):
+        #direction assignment
+        dirx.append(1 if vx[i] > 1 else 0)
+        diry.append(1 if vy[i] > 1 else 0)
+        vx[i]=abs(vx[i])
+        vy[i]=abs(vy[i])
+
+        if vx[i]==0 and vy[i]==0:
+            fx.append(0)
+            fy.append(0)
+            t.append(0)
+        elif vx[i]>vy[i]:
+            fx.append(maxFrequancy)
+            if vy[i]==0:
+                fy.append(0)
+            else:
+                fy.append((vy[i] / vx[i]) * maxFrequancy)
+            time = vx[i] / maxSpeed
+            t.append(time)
+
+        else:
+            fy.append(maxFrequancy)
+            if vx[i]==0:
+                fx.append(0)
+            else:
+                fx.append((vx[i] / vy[i]) * maxFrequancy)
+            time = vy[i] / maxSpeed
+            t.append(time)
+
 
 def generate_line(line):
     global currentX
@@ -99,10 +152,13 @@ def generate(object):
     else:
         generate_move(object)
 
-def test():
+def load():
     global vx
     global vy
     global vz
+    global fx
+    global fy
+    global t
     svg = open('test_car.svg')
 
     svg_dom = minidom.parse(svg)
@@ -111,19 +167,117 @@ def test():
 
     for path_string in path_strings:
         path_data = parse_path(path_string)
+
+
 #
     for path in path_data:
         generate(path)
 
     vx=[i for i in vx]
     vy=[i for i in vy]
-    print(vx)
+    w=float([path.getAttribute('width') for path in svg_dom.getElementsByTagName('svg')][0])
+    h=float([path.getAttribute('height') for path in svg_dom.getElementsByTagName('svg')][0])
+
+    resize(w,h)
+    set_frequancy()
+    fx = [int(i) for i in fx]
+    fy = [int(i) for i in fy]
+    t = [int(i) for i in t]
 
 
 
 
+def transmit():
+    global tRate
+    i=0
+    global fx
+    global fy
+    global t
+    global dirx
+    global diry
+    global vz
 
-    return vx,vy,vz
+    print(fx[908])
+
+
+    s = serial.Serial("COM4", 9600)
+
+
+    while True :
+        print(s.read())
+        a = struct.pack('I', len(fx))
+        s.write(a[0])
+        s.write(a[1])
+        s.write(a[2])
+        s.write(a[3])
+
+        print(s.read())
+        c = struct.pack('I', t[0])
+        s.write(c[0])
+        s.write(c[1])
+        s.write(c[2])
+        s.write(c[3])
+
+        while True:
+            a = s.read()
+            print(a)
+            if a!='a':
+                continue
+            iold = i
+
+            if i>len(fx)-1:
+                break
+            for j in range (i, iold+tRate):
+                ss = s.read()
+                print(ss)
+                a = struct.pack('I', fx[j])
+                s.write(a[0])
+                s.write(a[1])
+                s.write(a[2])
+                s.write(a[3])
+                b = struct.pack('I', fy[j])
+                s.write(b[0])
+                s.write(b[1])
+                s.write(b[2])
+                s.write(b[3])
+                c = struct.pack('I', t[j])
+                s.write(c[0])
+                s.write(c[1])
+                s.write(c[2])
+                s.write(c[3])
+
+            for j in range(i, iold + tRate):
+                # shifted_dirx=dirx[j]|dirx[j+1]<<1|dirx[j+2]<<2|dirx[j+3]<<3|dirx[j+4]<<4|dirx[j+5]<<5,dirx[j+6]<<6|dirx[j+7]<<7
+                # shifted_diry=diry[j]|diry[j+1]<<1|diry[j+2]<<2|diry[j+3]<<3|diry[j+4]<<4|diry[j+5]<<5,diry[j+6]<<6|diry[j+7]<<7
+                # shifted_pen=vz[j]|vz[j+1]<<1|vz[j+2]<<2|vz[j+3]<<3|vz[j+4]<<4|vz[j+5]<<5,vz[j+6]<<6|vz[j+7]<<7
+                a = s.read()
+                print(a)
+                a = struct.pack('B', dirx[j])
+                b = struct.pack('B', diry[j])
+                c = struct.pack('B', vz[j])
+                s.write(a[0])
+                s.write(b[0])
+                s.write(c[0])
+
+
+load()
+# print(sum(fx[0:499]))
+# print(sum(fy[0:499]))
+# print(sum(t[0:499]))
+#
+# print(sum(fx[0:999]))
+# print(sum(fy[0:999]))
+# print(sum(t[0:999]))
+
+#
+# print(sum(fx))
+# print(sum(fy))
+# print (sum(t))
+
+print(t[0])
+print (fy[499])
+transmit()
+
 
 #
 # print (path_data)
