@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03753116-dd0c-4a36-bb84-b60966010a27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/svgParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/svgParser.py" afterDir="false" />
-    </list>
+    <list default="true" id="03753116-dd0c-4a36-bb84-b60966010a27" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/svgParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+            <state relative-caret-position="37">
+              <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -97,8 +95,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="157" />
-    <option name="y" value="47" />
+    <option name="x" value="105" />
+    <option name="y" value="25" />
     <option name="width" value="1009" />
     <option name="height" value="965" />
   </component>
@@ -213,7 +211,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="126" y="38" width="807" height="772" extended-state="0" />
+    <frame x="84" y="20" width="807" height="772" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18961039" />
@@ -313,8 +311,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/svgParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+        <state relative-caret-position="37">
+          <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
